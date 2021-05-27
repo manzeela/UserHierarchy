@@ -14,11 +14,15 @@ namespace UsersHierarchy
         [JsonProperty(PropertyName = "Role")]
         public int Role { get; set; }
         
+        //overrding the tostring method to verify the data of each user while testing 
         public string ToString()
         {
             return String.Format("Id: {0}, Name: {1}, Role: {2}",this.Id,this.Name,this.Role);
         }
+        //list to store the users from json file
         public List<User> usersCollection = new List<User> { };
+
+        //stores the array of user into usersCollection
         public void setUsers(User[] users)
         {
             foreach (User user in users)
@@ -27,6 +31,7 @@ namespace UsersHierarchy
             }
         }
 
+        //returns the role of user with particular id passed into the method
         public int getSubOrdinatesRole(int userId)
         {
             
@@ -35,6 +40,7 @@ namespace UsersHierarchy
             return r;
         }
 
+        //returns the list of subordinate users whose id is in the list passed to the method
         public List<User> getSubOrdinate(List<int> Id)
         {
             List<User> subOrdinate = new List<User>();
